@@ -7,6 +7,8 @@ import Images from './components/Images'
 import Reviews from './components/Reviews'
 import ReservationCard from './components/ReservationCard'
 import { Metadata } from 'next'
+import { getRestaurantBySlug } from '@/lib/getData'
+import { SingleRestaurant } from '@/types'
 
 
 export const metadata: Metadata = {
@@ -14,11 +16,21 @@ export const metadata: Metadata = {
   description: '',
 }
 
-const RestaurantDetails = () => {
+
+// params
+// searchParams
+const RestaurantDetails = async ({params}:{params: {slug:string}}) => {
+
+const restaurantData: Promise<SingleRestaurant> = getRestaurantBySlug(
+  params.slug
+)
+const restaurant = await restaurantData
+
+
   return (
     <>
         <div className="bg-white w-[70%] rounded p-3 shadow">
-          <RestaurantNavBar />
+          <RestaurantNavBar slug={restaurant.slug}/>
           <Title />
           <Rating />
           <Description />
