@@ -1,7 +1,4 @@
-import NavBar from '@/app/components/NavBar'
-import Link from 'next/link'
 import React from 'react'
-import Header from './components/Header'
 import RestaurantNavBar from './components/RestaurantNavBar'
 import Title from './components/Title'
 import Rating from './components/Rating'
@@ -9,8 +6,14 @@ import Description from './components/Description'
 import Images from './components/Images'
 import Reviews from './components/Reviews'
 import ReservationCard from './components/ReservationCard'
+import { Metadata } from 'next'
 
-// takes a slug as prop
+
+export const metadata: Metadata = {
+  title: 'Milestone Grill (Toronto) | Opentable',
+  description: '',
+}
+
 const RestaurantDetails = () => {
   return (
     <>
